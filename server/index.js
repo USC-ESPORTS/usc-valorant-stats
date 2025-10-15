@@ -4,7 +4,10 @@ require('dotenv').config();
 const parse = require('csv-parse');
 
 const PORT = process.env.PORT || 3001;
+
+const cors = require("cors");
 const app = express();
+app.use(cors());
 
 // load in the initial csv file (for easily updating or adding new players when necessary)
 // parse the players as objects and create a json data file

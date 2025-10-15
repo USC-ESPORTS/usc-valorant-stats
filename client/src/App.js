@@ -181,7 +181,7 @@ const App = () => {
     const [data, setData] = React.useState([]);
     // pull data from server on page load
     React.useEffect(() => {
-        fetch("https://usc-valorant-stats.onrender.com/players")
+        fetch("https://usc-valorant-stats.onrender.com/players") // http://localhost:3001/players
             .then(res => res.json())
             .then(json => setData(json.players));
     }, []);

@@ -130,7 +130,7 @@ const update = async () => {
                 if (data.players[i].peakrank != account_data.data.highest_rank.patched_tier) { changes = true; }
                 data.players[i].peakrank = account_data.data.highest_rank.patched_tier
                 console.log(data.players[i].peakrank + " " + data.players[i].username)
-                await delay(3000); //wait 3 seconds per pull to not get rate-limited
+                await delay(5000); //wait 5 seconds per pull to not get rate-limited
             } catch (error) {
                 console.error('[ERROR]: ', error);
                 return;

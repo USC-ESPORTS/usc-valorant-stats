@@ -2,8 +2,6 @@ import React from "react";
 import './App.css';
 
 // TODO rename all files to match character/weapon names
-// TODO update readme with more information
-// TODO update favicon
 
 const Player = (props) => {
     // TODO make pretty later...

@@ -11,7 +11,18 @@ This is a web app build with React and express for the University of Southern Ca
 The app uses [HenrikDev's Valorant API](https://docs.henrikdev.xyz/valorant/general) to get player and match data.
 
 ## Workflow / File Structure
-### Client-Side
+### Server
+The back end is currently hosted on render, at https://usc-valorant-stats.onrender.com/players. This is likely to change, however, as the server will sleep when inactive and can have a long load time.
+
+`.env` - local file only, must include `REACT_APP_API_KEY=[YOUR API KEY]`.
+
+`data.csv` - where the player information is actually changed by admins.
+
+`data.json` - automatically updates based on csv changes and API changes.
+
+`index.js` - the server. comments in the file explain the various functions.
+
+### Client
 The front end is hosted on vercel, at https://usc-valorant-stats.vercel.app/.
 
 `public/` - folder for the index.html, manifest, robots and favicon.
@@ -24,33 +35,27 @@ The front end is hosted on vercel, at https://usc-valorant-stats.vercel.app/.
 
 `src/index.js` - the root file that calls App to be rendered.
 
+## Running Locally
+### Server
+1. run `npm install` in the root directory
+2. run `node index.js` in `server/`
 
-### Server-Side
-The back end is currently hosted on render, at https://usc-valorant-stats.onrender.com/players. This is likely to change, however, as the server will sleep when inactive and can have a long load time.
-
-`.env` - local file only, must include `REACT_APP_API_KEY=[YOUR API KEY]`.
-
-`data.csv` - where the player information is actually changed by admins.
-
-`data.json` - automatically updates based on csv changes and API changes.
-
-`index.js` - the server, ran locally with `node index.js`. comments in the file explain the various functions.
-
+### Client
+1. run `npm install` in `client/`
+2. run `npm start` in `client/`
 
 ## To Do
-### Back End:
-
+### Server:
 1. Analyze and compute best/average data points
 2. Better handle rate limit issues (or reach out to API developers to resolve this issue)
+3. Add API calls to user id instead of username and tag for security
 
-### Front End:
+### Client:
+4. Rename all asset files (weapons & agents)
+5. Recreate the header from the official USC esports website for cohesion
+6. CSS. Yeah.
 
-3. Rename all asset files (weapons & agents)
-4. Recreate the header from the official USC esports website for cohesion
-5. CSS. Yeah.
-
-### Future:
-
-6. Add API calls to user id instead of username and tag for security
+### Future Plans:
 7. Add competition match results
 8. Integrate this smoothly into the official [USC esports website](https://www.usctrojanesports.com/)
+9. Format for mobile viewing

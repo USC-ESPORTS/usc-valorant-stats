@@ -51,11 +51,10 @@ The front end is hosted on vercel, at https://usc-valorant-stats.vercel.app/.
 3. Add API calls to user id instead of username and tag for security
 
 ### Client:
-4. Rename all asset files (weapons & agents)
-5. Recreate the header from the official USC esports website for cohesion
-6. CSS. Yeah.
+4. Recreate the header from the official USC esports website for cohesion
+5. CSS. Yeah.
 
 ### Future Plans:
-7. Add competition match results
-8. Integrate this smoothly into the official [USC esports website](https://www.usctrojanesports.com/)
-9. Format for mobile viewing
+6. Add competition match results
+7. Integrate this smoothly into the official [USC esports website](https://www.usctrojanesports.com/)
+8. Format for mobile viewing

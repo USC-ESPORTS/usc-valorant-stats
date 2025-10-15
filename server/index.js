@@ -81,7 +81,7 @@ fs.readFile(
                             console.log("no recent changes made to csv file");
                             data = jsonfile;
                         }
-                        //update();
+                        update();
                     }
                 );
             }

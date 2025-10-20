@@ -1,20 +1,19 @@
 {
-  "name": "express",
-  "version": "1.0.0",
-  "description": "",
+  "name": "ecliptic-escape",
   "type": "module",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
   "dependencies": {
-    "@types/express": "^5.0.0",
+    "@astrojs/node": "^9.5.0",
+    "astro": "^5.14.7",
     "cors": "^2.8.5",
     "csv-parse": "^6.1.0",
     "dotenv": "^17.2.3",
-    "express": "^4.18.2"
-  },
-  "devDependencies": {
-    "@types/node": "^22.0.0"
-  },
-  "packageManager": "pnpm@9.14.2+sha512.6e2baf77d06b9362294152c851c4f278ede37ab1eba3a55fda317a4a17b209f4dbb973fb250a77abc463a341fcb1f17f17cfa24091c4eb319cda0d9b84278387"
+    "express": "^5.1.0"
+  }
 }

@@ -1,13 +1,25 @@
-const express = require("express");
-const fs = require("fs")
-require('dotenv').config();
-const parse = require('csv-parse');
-const { exec } = require('child_process');
+// run-server.mjs
+import express from 'express';
+import { handler as ssrHandler } from './dist/server/entry.mjs'; // Import Astro's SSR handler
+
+const app = express();
+
+// Serve static assets from 'dist/client/'
+const base = '/'; // Adjust this if your Astro project uses a different base path
+app.use(base, express.static('dist/client/'));
+
+// Use Astro's SSR handler for all other requests
+app.use(ssrHandler);
+
+import fs from "fs"
+import dotenv from "dotenv" 
+dotenv.config();
+import { parse } from 'csv-parse';
+import { exec } from 'child_process';
 
 const PORT = process.env.PORT || 3001;
 
-const cors = require("cors");
-const app = express();
+import cors from "cors";
 app.use(cors());
 
 // load in the initial csv file (for easily updating or adding new players when necessary)
@@ -38,7 +50,7 @@ fs.readFile(
                 }
                 //checking if changes in csv file, if not then don't update the data file
                 var changes = false;
-                parse.parse(
+                parse(
                     csvfile, { columns: true }, (err, jsondata) => {
                         if (err) {
                             console.error('Error parsing CSV:', err);

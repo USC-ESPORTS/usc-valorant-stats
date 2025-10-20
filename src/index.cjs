@@ -16,14 +16,14 @@ app.use(cors());
 let data = []
 
 fs.readFile(
-    "data.csv",
+    "src/data.csv",
     (err, csvfile) => {
         if (err) {
             console.error('error reading initial csv file:', err);
             return;
         }
         fs.readFile(
-            "data.json",
+            "src/data.json",
             (err, jsonfile) => {
                 if (err) {
                     console.error('error reading initial json file:', err);
@@ -74,7 +74,7 @@ fs.readFile(
                             const asString = "{\"players\":" + JSON.stringify(players) + "}";
                             data = JSON.parse(asString);
                             fs.writeFile(
-                                "data.json",
+                                "src/data.json",
                                 JSON.stringify(data, null, 2),
                                 (err) => { console.log("error with data.json file creation: " + err) });
                         } else {
@@ -113,7 +113,7 @@ const update = async () => {
             const region = data.players[i].region
             var username = encodeURIComponent(data.players[i].username);
             const tag = encodeURIComponent(data.players[i].tag);
-
+            
             // 1. account information for peak rank & rank icon
             try {
                 const response = await fetch(`https://api.henrikdev.xyz/valorant/v2/mmr/${region}/${username}/${tag}`, {

@@ -1,24 +1,19 @@
 {
-  "name": "usc-valorant-stats",
+  "name": "express",
   "version": "1.0.0",
-  "description": "[IN DEVELOPMENT!]",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/USC-ESPORTS/usc-valorant-stats.git"
-  },
+  "description": "",
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/USC-ESPORTS/usc-valorant-stats/issues"
-  },
-  "homepage": "https://github.com/USC-ESPORTS/usc-valorant-stats#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "@types/express": "^5.0.0",
+    "cors": "^2.8.5",
+    "csv-parse": "^6.1.0",
+    "dotenv": "^17.2.3",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0"
   }
 }

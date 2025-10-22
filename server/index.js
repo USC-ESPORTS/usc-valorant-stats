@@ -1,25 +1,13 @@
-// run-server.mjs
-import express from 'express';
-import { handler as ssrHandler } from './dist/server/entry.mjs'; // Import Astro's SSR handler
-
-const app = express();
-
-// Serve static assets from 'dist/client/'
-const base = '/'; // Adjust this if your Astro project uses a different base path
-app.use(base, express.static('dist/client/'));
-
-// Use Astro's SSR handler for all other requests
-app.use(ssrHandler);
-
-import fs from "fs"
-import dotenv from "dotenv" 
-dotenv.config();
-import { parse } from 'csv-parse';
-import { exec } from 'child_process';
+const express = require("express");
+const fs = require("fs")
+require('dotenv').config();
+const parse = require('csv-parse');
+const { exec } = require('child_process');
 
 const PORT = process.env.PORT || 3001;
 
-import cors from "cors";
+const cors = require("cors");
+const app = express();
 app.use(cors());
 
 // load in the initial csv file (for easily updating or adding new players when necessary)
@@ -28,14 +16,14 @@ app.use(cors());
 let data = []
 
 fs.readFile(
-    "src/data.csv",
+    "data.csv",
     (err, csvfile) => {
         if (err) {
             console.error('error reading initial csv file:', err);
             return;
         }
         fs.readFile(
-            "src/data.json",
+            "data.json",
             (err, jsonfile) => {
                 if (err) {
                     console.error('error reading initial json file:', err);
@@ -50,7 +38,7 @@ fs.readFile(
                 }
                 //checking if changes in csv file, if not then don't update the data file
                 var changes = false;
-                parse(
+                parse.parse(
                     csvfile, { columns: true }, (err, jsondata) => {
                         if (err) {
                             console.error('Error parsing CSV:', err);
@@ -86,7 +74,7 @@ fs.readFile(
                             const asString = "{\"players\":" + JSON.stringify(players) + "}";
                             data = JSON.parse(asString);
                             fs.writeFile(
-                                "src/data.json",
+                                "data.json",
                                 JSON.stringify(data, null, 2),
                                 (err) => { console.log("error with data.json file creation: " + err) });
                         } else {
@@ -125,7 +113,7 @@ const update = async () => {
             const region = data.players[i].region
             var username = encodeURIComponent(data.players[i].username);
             const tag = encodeURIComponent(data.players[i].tag);
-            
+
             // 1. account information for peak rank & rank icon
             try {
                 const response = await fetch(`https://api.henrikdev.xyz/valorant/v2/mmr/${region}/${username}/${tag}`, {

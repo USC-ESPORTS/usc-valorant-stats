@@ -165,7 +165,7 @@ const update = async () => {
                 JSON.stringify(data, null, 2),
                 (err) => { console.log("error with data.json file creation: " + err) }
             );
-            const commitMessage = `[AUTOCOMMIT] updates to data.json at ${ new Date() }`;
+            /*const commitMessage = `[AUTOCOMMIT] updates to data.json at ${ new Date() }`;
             const commands = [
                 'git add data.json',
                 `git commit -m "${commitMessage}"`,
@@ -179,7 +179,7 @@ const update = async () => {
                 console.log(`stdout: ${stdout}`);
                 console.error(`stderr: ${stderr}`);
                 console.log('Successfully pushed to Git!');
-            });
+            });*/ // TODO fix github push permissiond
         } else {
             console.log("no changes were made to data.json from API calls");
         }
